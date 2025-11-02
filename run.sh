@@ -1,0 +1,1 @@
+python3 ch03/simplified-self-attention.py
