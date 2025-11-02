@@ -48,4 +48,4 @@ for i, x_i in enumerate(inputs):
     context_vector_2 += attention_weights_2[i] * x_i
 print(context_vector_2)
 
-pdb.set_trace()
+# pdb.set_trace()
