@@ -2,7 +2,7 @@ import pdb
 import torch
 import torch.nn as nn
 
-torch.manual_seed(789)
+torch.manual_seed(123)
 
 inputs = torch.tensor(
     [
@@ -58,12 +58,9 @@ class SelfAttention_V2(nn.Module):
         mask = torch.triu(torch.ones(context_length, context_length), diagonal=1)
         masked = attention_scores.masked_fill(mask.bool(), -torch.inf)
         # print(masked)
-        attention_weights_with_inf = torch.softmax(masked / keys.shape[-1] ** 0.5, dim=-1)
+        attention_weights = torch.softmax(masked / keys.shape[-1] ** 0.5, dim=-1)
         print(f"Masked with inf:")
-        print(attention_weights_with_inf)
-        context_vectors = attention_weights_with_inf @ values
-        print(f"Context vectors with inf masking:")
-        print(context_vectors)
+        print(attention_weights)
 
         # dropout layer masking to prevent overfitting in the training
         dropout = torch.nn.Dropout(0.5)
@@ -71,6 +68,9 @@ class SelfAttention_V2(nn.Module):
         # print(dropout(example))
         print(f"Attention weights after dropout:")
         print(dropout(attention_weights))
+        context_vectors = attention_weights @ values
+        print(f"Context vectors:")
+        print(context_vectors)
         
         
     
