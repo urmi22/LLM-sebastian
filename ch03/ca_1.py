@@ -5,24 +5,6 @@ import torch
 import torch.nn as nn
 
 
-torch.manual_seed(789)
-
-inputs = torch.tensor(
-    [
-        [0.43, 0.15, 0.89], #your  --> x1
-        [0.55, 0.87, 0.66], #journey  --> x2
-        [0.57, 0.85, 0.64], #starts  --> x3
-        [0.22, 0.58, 0.33], #with  --> x4
-        [0.77, 0.25, 0.10], #one  --> x5
-        [0.05, 0.80, 0.55] #step  --> x6
-    ]
-)
-
-batch = torch.stack((inputs, inputs), dim=0)
-d_in = batch.shape[-1]
-d_out = 2
-context_length = batch.shape[1]
-
 
 class CausalAttention(nn.Module):
     def __init__(self, d_in, d_out, context_length, dropout, qkv_bias= False):
@@ -48,8 +30,31 @@ class CausalAttention(nn.Module):
 
         return context_vectors
     
+
+
+
+    
+    
 if __name__ == "__main__":
+
     # This code ONLY runs if the file is executed directly.
+    torch.manual_seed(789)
+
+    inputs = torch.tensor(
+        [
+            [0.43, 0.15, 0.89], #your  --> x1
+            [0.55, 0.87, 0.66], #journey  --> x2
+            [0.57, 0.85, 0.64], #starts  --> x3
+            [0.22, 0.58, 0.33], #with  --> x4
+            [0.77, 0.25, 0.10], #one  --> x5
+            [0.05, 0.80, 0.55] #step  --> x6
+        ]
+    )
+
+    batch = torch.stack((inputs, inputs), dim=0)
+    d_in = batch.shape[-1]
+    d_out = 2
+    context_length = batch.shape[1]
     ca = CausalAttention(d_in, d_out, context_length, 0.0)
     context_vecs = ca(batch)
     print(f"Context vectors using causal attention: ")

@@ -10,21 +10,7 @@ import pdb
 import torch
 import torch.nn as nn
 
-torch.manual_seed(123)
 
-inputs = torch.tensor(
-    [
-        [0.43, 0.15, 0.89], #your  --> x1
-        [0.55, 0.87, 0.66], #journey  --> x2
-        [0.57, 0.85, 0.64], #starts  --> x3
-        [0.22, 0.58, 0.33], #with  --> x4
-        [0.77, 0.25, 0.10], #one  --> x5
-        [0.05, 0.80, 0.55] #step  --> x6
-    ]
-)
-
-d_in = inputs.shape[1]
-d_out = 2
 
 class SelfAttention_V2(nn.Module):
     def __init__(self, d_in,  d_out, qkv_bias = False):
@@ -49,5 +35,22 @@ class SelfAttention_V2(nn.Module):
         return context_vectors
     
 
-sa_v2 = SelfAttention_V2(d_in, d_out)
-print(sa_v2(inputs))
+
+if __name__ == "__main__":
+
+    torch.manual_seed(123)
+    inputs = torch.tensor(
+        [
+            [0.43, 0.15, 0.89], #your  --> x1
+            [0.55, 0.87, 0.66], #journey  --> x2
+            [0.57, 0.85, 0.64], #starts  --> x3
+            [0.22, 0.58, 0.33], #with  --> x4
+            [0.77, 0.25, 0.10], #one  --> x5
+            [0.05, 0.80, 0.55] #step  --> x6
+        ]
+    )
+
+    d_in = inputs.shape[1]
+    d_out = 2
+    sa_v2 = SelfAttention_V2(d_in, d_out)
+    print(sa_v2(inputs))
