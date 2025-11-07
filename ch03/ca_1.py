@@ -19,7 +19,6 @@ inputs = torch.tensor(
 )
 
 batch = torch.stack((inputs, inputs), dim=0)
-print(batch.shape)
 d_in = batch.shape[-1]
 d_out = 2
 context_length = batch.shape[1]
@@ -49,8 +48,10 @@ class CausalAttention(nn.Module):
 
         return context_vectors
     
-
-ca = CausalAttention(d_in, d_out, context_length, 0.0)
-context_vecs = ca(batch)
-print(f"Context vectors shape: {context_vecs.shape}")
-print(f"Context vectors: {context_vecs}")
+if __name__ == "__main__":
+    # This code ONLY runs if the file is executed directly.
+    ca = CausalAttention(d_in, d_out, context_length, 0.0)
+    context_vecs = ca(batch)
+    print(f"Context vectors using causal attention: ")
+    print(context_vecs)
+    print(f"Context vectors shape: {context_vecs.shape}")

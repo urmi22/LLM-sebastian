@@ -25,7 +25,6 @@ inputs = torch.tensor(
 )
 
 batch = torch.stack((inputs, inputs), dim=0)
-print(batch.shape)
 d_in = batch.shape[-1]
 d_out = 2
 context_length = batch.shape[1]
@@ -37,11 +36,13 @@ class MultiheadAttentionWrapper(nn.Module):
 
     def forward(self, x):
         return torch.cat([head(x) for head in self.heads], dim=-1)
-    
 
-mha = MultiheadAttentionWrapper(d_in, d_out, context_length, 0.0, num_heads=2)
-context_vectors = mha(batch)
-print(f"Context_vectors using Multihead Attention:")
-print(context_vectors)
-print(f"Context vectors shape:")
-print(context_vectors.shape)
+
+if __name__ == "__main__":
+    # This code ONLY runs if the file is executed directly.
+    mha = MultiheadAttentionWrapper(d_in, d_out, context_length, 0.0, num_heads=2)
+    context_vectors = mha(batch)
+    print(f"Context_vectors using Multihead Attention:")
+    print(context_vectors)
+    print(f"Context vectors shape:")
+    print(context_vectors.shape)
