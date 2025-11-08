@@ -1,3 +1,9 @@
+# python3 ch02/simple-tokenizerv1.py
+# python3 ch02/simple-tokenizerv2.py
+# python3 ch02/bpe.py
+# python3 ch02/imput-target.py
+# python3 ch02/dataloader.py
+# python3 ch02/embedding.py
 # python3 ch03/simplified-self-attention.py
 # python3 ch03/ssa-1.py
 # python3 ch03/self-attention.py
@@ -10,4 +16,5 @@
 # python3 ch03/exercise_2.py
 # python3 ch03/multihead_attention_1.py
 python3 ch03/exercise_3.py
+
 
