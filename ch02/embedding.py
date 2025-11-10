@@ -15,7 +15,7 @@ token_embedding_layer = torch.nn.Embedding(vocab_size, output_dim)
 # print(embedding_layer(torch.tensor([3])).shape)
 # print(embedding_layer(input_ids).shape)
 
-with open("the-verdict.txt", 'r', encoding="utf-8") as f1:
+with open("./ch02/the-verdict.txt", 'r', encoding="utf-8") as f1:
     raw_text = f1.read()
 
 max_length = 4
@@ -35,6 +35,4 @@ print(pos_embeddings.shape)
 
 input_embeddings = token_embeddings + pos_embeddings
 print(input_embeddings.shape)
-
-
 
