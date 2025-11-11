@@ -15,6 +15,8 @@
 # python3 ch03/multihead_attention.py
 # python3 ch03/exercise_2.py
 # python3 ch03/multihead_attention_1.py
-python3 ch03/exercise_3.py
+# python3 ch03/exercise_3.py
+# python3 ch04/dummy_GPT_model.py
+python3 ch04/layer_norm_example.py
 
 

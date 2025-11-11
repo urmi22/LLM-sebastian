@@ -3,7 +3,11 @@
 import pdb
 import torch
 import torch.nn as nn
+import tiktoken
+import numpy
+
 from GPT_CONFIG_124M import GPT_CONFIG_124M as cfg
+from layer_norm import LayerNorm
 
 
 
@@ -44,4 +48,9 @@ class DummyLayerNorm(nn.Module):
 
     def forward(self, x):
         return x
+    
+
+
+
+
     
