@@ -19,6 +19,7 @@
 # python3 ch04/dummy_GPT_model.py
 # python3 ch04/layer_norm_example.py
 # python3 ch04/comparison_GELU_ReLU.py
-python3 ch04/feed_forward_example.py
+# python3 ch04/feed_forward_example.py
+python3 ch04/skip_connection_example.py
 
 

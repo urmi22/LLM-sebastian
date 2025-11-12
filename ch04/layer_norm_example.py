@@ -1,4 +1,4 @@
-
+# Execution of Layer Normalization by an example
 
 import pdb
 import torch
