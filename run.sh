@@ -1,3 +1,5 @@
+export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
+
 # python3 ch02/simple-tokenizerv1.py
 # python3 ch02/simple-tokenizerv2.py
 # python3 ch02/bpe.py
@@ -20,6 +22,7 @@
 # python3 ch04/layer_norm_example.py
 # python3 ch04/comparison_GELU_ReLU.py
 # python3 ch04/feed_forward_example.py
-python3 ch04/skip_connection_example.py
+# python3 ch04/skip_connection_example.py
+python3 ch04/transformer_block_GPT.py
 
 
