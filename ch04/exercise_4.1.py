@@ -12,7 +12,7 @@ from GPT_model import GPTModel
 from feed_forward import FeedForward
 from ch03.multihead_attention_1 import MultiHeadAttention
 from transformer_block_GPT import TransformerBlock
-from GPT_CONFIG_124M import GPT_CONFIG_124M as cfg
+from GPT_CONFIG_124M import GPT_2_small as cfg
 
 
 ff = FeedForward(cfg)

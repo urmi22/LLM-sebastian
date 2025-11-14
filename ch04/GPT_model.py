@@ -8,7 +8,7 @@ import torch.nn as nn
 
 from transformer_block_GPT import TransformerBlock
 from layer_norm import LayerNorm
-from GPT_CONFIG_124M import GPT_CONFIG_124M as cfg
+from GPT_CONFIG_124M import GPT_2_small as cfg
 
 
 
@@ -66,5 +66,9 @@ if __name__ == "__main__":
 
     total_params_gpt2 = (total_params - sum(p.numel() for p in model.out_head.parameters()))
     print(f"Number of trainable parameters " f"considering weight tying: {total_params_gpt2:,}")
+
+    total_size_bytes = total_params * 4
+    total_size_mb = total_size_bytes / (1024 * 1024)
+    print(f"Total size of the model: {total_size_mb:.2f} MB")
     
 

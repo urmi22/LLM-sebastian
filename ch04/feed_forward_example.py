@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 
 from feed_forward import FeedForward
-from GPT_CONFIG_124M import GPT_CONFIG_124M as cfg
+from GPT_CONFIG_124M import GPT_2_small as cfg
 
 ffn = FeedForward(cfg)
 

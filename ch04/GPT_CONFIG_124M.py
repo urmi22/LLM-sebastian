@@ -1,9 +1,39 @@
-GPT_CONFIG_124M = {
+GPT_2_small= {
     "vocab_size": 50257,
     "context_length": 1024,
     "emb_dim": 768,
     "n_heads": 12,
     "n_layers": 12,
+    "drop_rate": 0.1,
+    "qkv_bias": False
+
+}
+GPT_2_medium= {
+    "vocab_size": 50257,
+    "context_length": 1024,
+    "emb_dim": 1024,
+    "n_heads": 16,
+    "n_layers": 24,
+    "drop_rate": 0.1,
+    "qkv_bias": False
+
+}
+GPT_2_large= {
+    "vocab_size": 50257,
+    "context_length": 1024,
+    "emb_dim": 1280,
+    "n_heads": 20,
+    "n_layers": 36,
+    "drop_rate": 0.1,
+    "qkv_bias": False
+
+}
+GPT_2_xl = {
+    "vocab_size": 50257,
+    "context_length": 1024,
+    "emb_dim": 1600,
+    "n_heads": 25,
+    "n_layers": 48,
     "drop_rate": 0.1,
     "qkv_bias": False
 

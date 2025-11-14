@@ -6,7 +6,7 @@ import torch.nn as nn
 import tiktoken
 import numpy
 
-from GPT_CONFIG_124M import GPT_CONFIG_124M as cfg
+from GPT_CONFIG_124M import GPT_2_small as cfg
 from layer_norm import LayerNorm
 
 
