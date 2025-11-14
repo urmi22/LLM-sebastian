@@ -27,3 +27,9 @@ total_params_mha = sum(p.numel() for p in tf_block.attention.parameters())
 print(f"Number of parameters in Feed Forward module: {total_params_ff}")
 print(f"Number of parameters in Multi-head attention module: {total_params_mha}")
 
+'''
+The results above are for a single transformer block
+Optionally multiply by 12 to capture all transformer blocks in the 124M GPT model
+
+'''
+
