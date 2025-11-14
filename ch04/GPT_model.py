@@ -57,3 +57,14 @@ if __name__ == "__main__":
     print("\nOutput shape:", out.shape)
     print(out)
 
+    # weight tying
+    total_params = sum(p.numel() for p in model.parameters())
+    print(f"Total number of parameters: {total_params}")
+
+    print("Token embedding layer shape:", model.tok_emb.weight.shape)
+    print("Output layer shape:", model.out_head.weight.shape)
+
+    total_params_gpt2 = (total_params - sum(p.numel() for p in model.out_head.parameters()))
+    print(f"Number of trainable parameters " f"considering weight tying: {total_params_gpt2:,}")
+    
+

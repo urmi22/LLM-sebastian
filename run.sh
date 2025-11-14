@@ -24,6 +24,7 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch04/feed_forward_example.py
 # python3 ch04/skip_connection_example.py
 # python3 ch04/transformer_block_GPT.py
-python3 ch04/GPT_model.py
+# python3 ch04/GPT_model.py
+python3 ch04/exercise_4.1.py
 
 
