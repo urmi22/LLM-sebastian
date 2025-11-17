@@ -1,4 +1,10 @@
-# A function for the GPT model to generate text
+'''
+A function for the GPT model to generate text.
+
+This model is generated gibberish because we haven't trained it yet.
+So far, we have only implemented the GPT architecture and initialized a GPT model instance with initial random weights.
+
+'''
 
 
 import pdb
@@ -60,6 +66,9 @@ def main():
     model.eval()
     out = generate_text_simple(model=model, idx=encoded_tensor, max_new_tokens=6, context_size=cfg["context_length"])
     print(f"output: {out}")
+    print(f"length of output: {len(out[0])}")
+    decoded_text = tokenizer.decode(out.squeeze(0).tolist())
+    print(f"Decoded text: {decoded_text}")
     pdb.set_trace()
 
 
