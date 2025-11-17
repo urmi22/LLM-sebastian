@@ -28,7 +28,7 @@ class SelfAttention_V1(nn.Module):
     
 
 
-if __name__ == "__main__":
+def main():
 
     torch.manual_seed(123)
     inputs = torch.tensor(
@@ -45,4 +45,10 @@ if __name__ == "__main__":
     d_out = 2
     sa_v1 = SelfAttention_V1(d_in, d_out)
     print(sa_v1(inputs))
+
+
+
+
+if __name__ == "__main__":
+    main()
 

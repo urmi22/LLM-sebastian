@@ -111,9 +111,15 @@ def calculate_size(model):
     '''
 
 
-if __name__ == "__main__":
+def main():
     models = ['small', 'medium', 'large', 'xl']
     for model in models:
         model_name = model
         print(f"Model name: {model_name}\n--------------")
         calculate_size(model)
+
+
+
+
+if __name__ == "__main__":
+    main()

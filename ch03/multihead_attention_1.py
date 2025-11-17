@@ -79,7 +79,7 @@ class MultiHeadAttention(nn.Module):
         return context_vectors
     
 
-if __name__ == "__main__":
+def main():
 
     torch.manual_seed(123)
     inputs = torch.tensor(
@@ -101,6 +101,11 @@ if __name__ == "__main__":
     print(f"Compact Multihead Attention:")
     print(context_vectors)
     print(f"Shape: {context_vectors.shape}")
+
+
+
+if __name__ == "__main__":
+    main()
 
 
 

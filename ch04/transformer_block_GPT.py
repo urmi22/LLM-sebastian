@@ -50,8 +50,7 @@ class TransformerBlock(nn.Module):
     
 
 
-
-if __name__ == "__main__":
+def main():
     torch.manual_seed(123)
     # Creates sample input of shape [batch_size, num_tokens, emb_dim]
     x = torch.rand(2, 4, 768)
@@ -60,4 +59,10 @@ if __name__ == "__main__":
 
     print(f"Input shape: {x.shape}")
     print(f"Output shape: {output.shape}")
+
+
+
+
+if __name__ == "__main__":
+    main()
 

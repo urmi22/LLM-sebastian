@@ -31,11 +31,7 @@ class CausalAttention(nn.Module):
         return context_vectors
     
 
-
-
-    
-    
-if __name__ == "__main__":
+def main():
 
     # This code ONLY runs if the file is executed directly.
     torch.manual_seed(789)
@@ -60,3 +56,10 @@ if __name__ == "__main__":
     print(f"Context vectors using causal attention: ")
     print(context_vecs)
     print(f"Context vectors shape: {context_vecs.shape}")
+
+    
+    
+if __name__ == "__main__":
+    main()
+
+    

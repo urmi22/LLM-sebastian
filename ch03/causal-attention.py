@@ -57,10 +57,9 @@ class SelfAttention_V2(nn.Module):
         context_vectors = attention_weights @ values
         print(f"Context vectors:")
         print(context_vectors)
-        
 
 
-if __name__ == "__main__":
+def main():
 
     torch.manual_seed(123)
 
@@ -78,4 +77,10 @@ if __name__ == "__main__":
     d_in = inputs.shape[1]
     d_out = 2
     sa_v2 = SelfAttention_V2(d_in, d_out)
-    sa_v2(inputs)
+    sa_v2(inputs)       
+
+
+
+if __name__ == "__main__":
+    main()
+

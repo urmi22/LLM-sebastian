@@ -15,7 +15,7 @@ from layer_norm import LayerNorm
 
 
 
-if __name__ == "__main__":
+def main():
 
     torch.manual_seed(123)
 
@@ -74,3 +74,9 @@ if __name__ == "__main__":
     var = out_ln.var(dim=-1, unbiased=False, keepdim=True)
     print(f"Mean: {mean},\n Variance: {var}")
 
+
+
+
+
+if __name__ == "__main__":
+    main()

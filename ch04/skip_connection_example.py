@@ -29,9 +29,7 @@ def print_gradients(model, x):
 
 
 
-
-
-if __name__ =="__main__":
+def main():
     layer_sizes = [3, 3, 3, 3, 3, 1]
     sample_input = torch.tensor([[-1., 0., 1.]])
     torch.manual_seed(123)
@@ -43,4 +41,11 @@ if __name__ =="__main__":
     model_with_shortcut = ExampleDeepNeuralNetwork(layer_sizes, use_shortcut=True)
     print(f"With skip connection\n---------------------------")
     print_gradients(model_with_shortcut, sample_input)
+
+
+
+
+
+if __name__ == "__main__":
+    main()
 

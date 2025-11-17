@@ -39,7 +39,7 @@ class GPTModel(nn.Module):
 
 
 
-if __name__ == "__main__":
+def main():
 
     torch.manual_seed(123)
 
@@ -72,3 +72,8 @@ if __name__ == "__main__":
     print(f"Total size of the model: {total_size_mb:.2f} MB")
     
 
+
+
+
+if __name__ == "__main__":
+    main()

@@ -24,7 +24,7 @@ class MultiheadAttentionWrapper(nn.Module):
 
 
 
-if __name__ == "__main__":
+def main():
     # This code ONLY runs if the file is executed directly.
 
     torch.manual_seed(123)
@@ -49,3 +49,9 @@ if __name__ == "__main__":
     print(context_vectors)
     print(f"Context vectors shape:")
     print(context_vectors.shape)
+
+
+
+
+if __name__ == "__main__":
+    main()
