@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from GPT_CONFIG_124M import GPT_2_small as cfg
-from GELU import GELU
+from ch04.GELU import GELU
 
 class FeedForward(nn.Module):
     def __init__(self, cfg):

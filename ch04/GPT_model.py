@@ -6,8 +6,8 @@ import torch
 import tiktoken
 import torch.nn as nn
 
-from transformer_block_GPT import TransformerBlock
-from layer_norm import LayerNorm
+from ch04.transformer_block_GPT import TransformerBlock
+from ch04.layer_norm import LayerNorm
 from GPT_CONFIG_124M import GPT_2_small as cfg
 
 

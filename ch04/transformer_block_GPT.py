@@ -6,8 +6,8 @@ import torch.nn as nn
 
 from ch03.multihead_attention_1 import MultiHeadAttention
 from GPT_CONFIG_124M import GPT_2_small as cfg
-from layer_norm import LayerNorm
-from feed_forward import FeedForward
+from ch04.layer_norm import LayerNorm
+from ch04.feed_forward import FeedForward
 
 
 class TransformerBlock(nn.Module):

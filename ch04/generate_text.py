@@ -1,5 +1,5 @@
 '''
-A function for the GPT model to generate text.
+An utility function for the GPT model to generate text.
 
 This model is generated gibberish because we haven't trained it yet.
 So far, we have only implemented the GPT architecture and initialized a GPT model instance with initial random weights.
@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 import tiktoken
 
-from GPT_model import GPTModel
+from ch04.GPT_model import GPTModel
 from GPT_CONFIG_124M import GPT_2_small as cfg
 
 
@@ -69,7 +69,7 @@ def main():
     print(f"length of output: {len(out[0])}")
     decoded_text = tokenizer.decode(out.squeeze(0).tolist())
     print(f"Decoded text: {decoded_text}")
-    pdb.set_trace()
+    
 
 
 if __name__ == "__main__":
