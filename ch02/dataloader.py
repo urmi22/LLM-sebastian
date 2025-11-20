@@ -11,10 +11,11 @@ class GPTDatasetV1(Dataset):
         self.input_ids = []
         self.target_ids = []
 
-        token_ids = tokenizer.encode(txt)
-        # print(len(token_ids))
+        # # Tokenize the entire text
+        token_ids = tokenizer.encode(txt, allowed_special={"<|endoftext|>"})
 
-        for i in range(0, len(token_ids) + max_length, stride):
+        # # Use a sliding window to chunk the book into overlapping sequences of max_length
+        for i in range(0, len(token_ids) - max_length, stride):
             input_chunk = token_ids[i: i+max_length]
             target_chunk = token_ids[i+1: i+1+max_length]
             self.input_ids.append(torch.tensor(input_chunk))
@@ -28,6 +29,7 @@ class GPTDatasetV1(Dataset):
     
     
 def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=True, drop_last= True, num_workers=0):
+
     tokenizer = tiktoken.get_encoding("gpt2")
     dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, drop_last=drop_last, num_workers=num_workers)
