@@ -7,7 +7,7 @@ import torch.nn as nn
 
 from ch04.GPT_model import GPTModel
 from GPT_CONFIG_124M import GPT_2_small as cfg
-from ch05.generate_text import token_ids_to_text
+from ch05.text_generation import token_ids_to_text
 
 
 
