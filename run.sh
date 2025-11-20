@@ -32,7 +32,8 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch05/text_to_token_ID.py
 # python3 ch05/text_generation.py
 # python3 ch05/text_evaluation.py
-python3 ch05/training_validation_loss.py
+# python3 ch05/training_validation_loss.py
+python3 ch05/training_LLM.py
 
 
 

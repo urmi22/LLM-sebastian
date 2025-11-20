@@ -42,12 +42,40 @@ def calc_loss_loader(data_loader, model, device, num_batches=None):
         else:
             break
         
-        # Averages the loss over all batches
-        avg_loss = total_loss / num_batches
-        return avg_loss
+    # Averages the loss over all batches
+    avg_loss = total_loss / num_batches
+    return avg_loss
 
 
 
+
+def train_val_loader(train_data, val_data):
+
+    '''
+    Using the train_data and val_data subsets, 
+    we can now create the respective data loader reusing the create_dataloader_v1 code from chapter 2
+
+    '''
+
+    train_loader = create_dataloader_v1(train_data, 
+                                        batch_size=2, 
+                                        max_length=cfg["context_length"], 
+                                        stride=cfg["context_length"],
+                                        drop_last=True, 
+                                        shuffle=True,
+                                        num_workers=0
+                                        )
+    
+    val_loader = create_dataloader_v1(val_data,
+                                      batch_size=2,
+                                      max_length=cfg["context_length"],
+                                      stride=cfg["context_length"],
+                                      drop_last=False,
+                                      shuffle=False,
+                                      num_workers=0
+                                      )
+    
+    return train_loader, val_loader
 
 
 def main():
@@ -80,30 +108,9 @@ def main():
     train_data = text_data[:split_idx]
     val_data = text_data[split_idx:]
 
-    
-    '''
-    Using the train_data and val_data subsets, 
-    we can now create the respective data loader reusing the create_dataloader_v1 code from chapter 2
+    train_loader, val_loader = train_val_loader(train_data, val_data)
 
-    '''
-
-    train_loader = create_dataloader_v1(train_data, 
-                                        batch_size=2, 
-                                        max_length=cfg["context_length"], 
-                                        stride=cfg["context_length"],
-                                        drop_last=True, 
-                                        shuffle=True,
-                                        num_workers=0
-                                        )
     
-    val_loader = create_dataloader_v1(val_data,
-                                      batch_size=2,
-                                      max_length=cfg["context_length"],
-                                      stride=cfg["context_length"],
-                                      drop_last=False,
-                                      shuffle=False,
-                                      num_workers=0
-                                      )
     
     print(f"Train Loader\n-----------")
     train_tokens = 0
@@ -126,6 +133,8 @@ def main():
 
     print(f"Training loss: {train_loss}")
     print(f"validation loss : {val_loss}")
+
+    return train_loader, val_loader
 
 
 
