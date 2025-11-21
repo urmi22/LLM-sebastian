@@ -119,7 +119,16 @@ def main():
                                                                      )
 
 
+    # # saving the model
+    # torch.save(model.state_dict(), "./ch05/model.pth")
 
+    # we should save optimizer also (see the note of page number 160), so we can save model and optimizer together
+    torch.save(
+        {
+        "model_state_dict": model.state_dict(),
+        "optimizer_state_dict": optimizer.state_dict()
+    }, "./ch05/model_and_optimizer.pth"
+    )
 
 
 

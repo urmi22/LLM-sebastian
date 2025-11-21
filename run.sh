@@ -33,7 +33,9 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch05/text_generation.py
 # python3 ch05/text_evaluation.py
 # python3 ch05/training_validation_loss.py
-python3 ch05/training_LLM.py
+# python3 ch05/training_LLM.py
+# python3 ch05/exercise_5.1.py
+python3 ch05/modified_text_generation.py
 
 
 
