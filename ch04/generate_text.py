@@ -13,7 +13,7 @@ import torch.nn as nn
 import tiktoken
 
 from ch04.GPT_model import GPTModel
-from GPT_CONFIG_124M import GPT_2_small as cfg
+from ch05.GPT_CONFIG_124M import GPT_2_small as cfg
 
 
 
