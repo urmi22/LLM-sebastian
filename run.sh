@@ -37,7 +37,9 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch05/exercise_5.1.py
 # python3 ch05/modified_text_generation.py
 # python3 ch05/GPT_weight/downlaod_GPT_weight.py
-python3 ch05/GPT_weight/load_GPT_weight.py
+# python3 ch05/GPT_weight/load_GPT_weight.py
+# python3 ch06/download_unzip_data.py
+python3 ch06/dataset_creation.py
 
 
 
