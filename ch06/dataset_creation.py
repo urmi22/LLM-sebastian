@@ -35,7 +35,7 @@ def create_balanced_dataset(df):
 
 
 def main():
-    data_file_path = "./ch06/data/sms_spam_collection/SMSSpamCollection.tsv"
+    data_file_path = "./ch06/all_dataset/sms_spam_collection/SMSSpamCollection.tsv"
     df = pd.read_csv(data_file_path, sep="\t", header=None, names=["Label", "Text"])
     # print(df)
 
