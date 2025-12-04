@@ -1,4 +1,5 @@
 import tiktoken
+import torch
 
 from ch05.GPT_weight.gpt_download import download_and_load_gpt2
 from ch04.GPT_model import GPTModel
@@ -44,3 +45,42 @@ token_ids = generate_text_simple(model=model,
                                  context_size=BASE_CONFIG["context_length"]
                                  )
 print(token_ids_to_text(token_ids, tokenizer))
+
+print(model)
+
+# To get the model ready for classification fine-tuning, we first freeze the model, meaning that we make all layers nontrainable:
+for param in model.parameters():
+    param.requires_grad = False
+
+# Adding a classification layer, change the originial out_head
+torch.manual_seed(123)
+num_classes = 2
+model.out_head = torch.nn.Linear(in_features=BASE_CONFIG["emb_dim"],
+                                 out_features=num_classes
+                                 )
+
+# To make the final LayerNorm and last transformer block trainable, we set their  respective requires_grad to True
+for param in model.transformer_block[-1].parameters():
+    param.requires_grad = True
+for param in model.final_norm.parameters():
+    param.requires_grad = True
+
+# For instance, we can feed it an example text identical to our previously used example text:
+inputs = tokenizer.encode("Do you have time")
+inputs = torch.tensor(inputs).unsqueeze(0)
+print("Inputs:", inputs)
+print("Inputs dimensions:", inputs.shape)
+
+# Then, we can pass the encoded token IDs to the model as usual:
+with torch.no_grad():
+    outputs = model(inputs)
+
+print("Outputs:\n", outputs)
+print("Outputs dimensions:", outputs.shape)
+
+'''
+see page no 188-190, to know why we need only last output token
+To extract the last output token from the output tensor, we use the following code
+
+'''
+print("Last output token:", outputs[:, -1, :])
