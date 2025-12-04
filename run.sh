@@ -40,7 +40,8 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch05/GPT_weight/load_GPT_weight.py
 # python3 ch06/download_unzip_data.py
 # python3 ch06/dataset_creation.py
-python3 ch06/dataloader.py
+# python3 ch06/dataloader.py
+python3 ch06/load_pretrained_GPT.py
 
 
 
