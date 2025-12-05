@@ -1,11 +1,15 @@
 import tiktoken
 import torch
+import pdb
 
 from ch05.GPT_weight.gpt_download import download_and_load_gpt2
 from ch04.GPT_model import GPTModel
 from ch05.GPT_weight.load_GPT_weight import load_weights_into_gpt
 from ch04.generate_text import generate_text_simple
 from ch05.text_generation import text_to_token_ids, token_ids_to_text
+from ch06.dataloader import main
+from ch06.utils import calc_accuracy_loader, calc_loss_loader
+
 
 CHOOSE_MODEL = "gpt2-small (124M)"
 INPUT_PROMPT = "Every effort moves"
@@ -40,7 +44,7 @@ text_2 = ("Is the following text 'spam'? Answer with 'yes' or 'no':" " 'You are 
           " selected to receive $1000 cash or a $2000 award.'" 
           )
 token_ids = generate_text_simple(model=model,
-                                 idx=text_to_token_ids(text_2, tokenizer),
+                                 idx=text_to_token_ids(text_1, tokenizer),
                                  max_new_tokens=15,
                                  context_size=BASE_CONFIG["context_length"]
                                  )
@@ -79,8 +83,56 @@ print("Outputs:\n", outputs)
 print("Outputs dimensions:", outputs.shape)
 
 '''
-see page no 188-190, to know why we need only last output token
+see page no 188-190, to know why we need only last output token.
+The last token is the only token with an attention score to all other tokens.
 To extract the last output token from the output tensor, we use the following code
 
 '''
 print("Last output token:", outputs[:, -1, :])
+probas = torch.softmax(outputs[:, -1, :], dim=-1)
+label = torch.argmax(probas)
+print(f"Class label: {label.item()}")
+
+'''
+Using the softmax function here is optional because the largest outputs directly correspond to the highest probability scores. 
+Hence, we can simplify the code without using softmax
+
+'''
+logits = outputs[:, -1, :]
+label = torch.argmax(logits)
+print(f"Class label: {label.item()}")
+
+# Let’s use the function to determine the classification accuracies across various datasets estimated from 10 batches for efficiency:
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+torch.manual_seed(123)
+train_loader, val_loader, test_loader = main()
+train_accuracy = calc_accuracy_loader(train_loader,
+                  model,
+                  device,
+                  num_batches=10
+                  )
+val_accuracy = calc_accuracy_loader(val_loader,
+                  model,
+                  device,
+                  num_batches=10
+                  )
+test_accuracy = calc_accuracy_loader(test_loader,
+                  model,
+                  device,
+                  num_batches=10
+                  )
+print(f"Training accuracy: {train_accuracy*100:.2f}%")
+print(f"Validation accuracy: {val_accuracy*100:.2f}%")
+print(f"Test accuracy: {test_accuracy*100:.2f}%")
+
+# Similar to calculating the training accuracy, we now compute the initial loss for each data set
+# Disables gradient tracking "with torch.no_grad()" for efficiency because we are not training yet
+with torch.no_grad():
+    train_loss = calc_loss_loader(train_loader, model, device, num_batches=5)
+    val_loss = calc_loss_loader(val_loader, model, device, num_batches=5)
+    test_loss = calc_loss_loader(test_loader, model, device, num_batches=5)
+
+print(f"Training loss: {train_loss:.3f}")
+print(f"Validation loss: {val_loss:.3f}")
+print(f"Test loss: {test_loss:.3f}")

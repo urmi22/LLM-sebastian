@@ -41,7 +41,7 @@ export PYTHONPATH="/home2/debjani.mazumder/self/LLM-sebastian"
 # python3 ch06/download_unzip_data.py
 # python3 ch06/dataset_creation.py
 # python3 ch06/dataloader.py
-python3 ch06/load_pretrained_GPT.py
+python3 ch06/model_setup.py
 
 
 

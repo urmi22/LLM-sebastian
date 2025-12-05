@@ -59,18 +59,6 @@ class SpamDataset(Dataset):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
 
     tokenizer = tiktoken.get_encoding("gpt2")
@@ -122,7 +110,7 @@ def main():
     print(f"{len(test_loader)} test batches")
     
     
-    pdb.set_trace()
+    return train_loader, val_loader, test_loader
 
     
     
@@ -132,4 +120,4 @@ def main():
 
 
 if __name__=="__main__":
-    main()
+    train_loader, val_loader, test_loader = main()
